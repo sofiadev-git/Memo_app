@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0">
+
+    <title>Catalogo mazzi - Memo</title>
+
+    <link
+            rel="icon"
+            th:href="@{/favicon.ico}">
+
+    <link
+            rel="stylesheet"
+            th:href="@{/css/thymeleaf.css}">
+</head>
+
+<body>
+
+<header class="simple-header">
+    <a class="logo" href="http://localhost:5173/">
+        Memo
+    </a>
+
+    <nav>
+        <a href="http://localhost:5173/">Home</a>
+        <a th:href="@{/register}">Registrati</a>
+        <a href="http://localhost:5173/login">Accedi</a>
+    </nav>
+</header>
+
+<main class="catalog-page">
+
+    <section class="catalog-heading">
+        <h1>Catalogo dei mazzi</h1>
+
+        <p>
+            Tutti i mazzi pubblicati su Memo,
+            dal più recente.
+        </p>
+    </section>
+
+    <div
+            class="empty-message"
+            th:if="${deckPage.empty}">
+        Non ci sono ancora mazzi.
+    </div>
+
+    <section
+            class="deck-grid"
+            th:unless="${deckPage.empty}">
+
+        <article
+                class="deck-card"
+                th:each="deck : ${deckPage.content}">
+
+            <div class="deck-category">
+                <span th:text="${deck.category}">
+                    Categoria
+                </span>
+            </div>
+
+            <h2 th:text="${deck.name}">
+                Nome mazzo
+            </h2>
+
+            <p>
+                Autore:
+                <strong th:text="${deck.autore.credentials.username}">
+                    utente
+                </strong>
+            </p>
+
+            <p>
+                Like:
+                <strong th:text="${deck.likes}">
+                    0
+                </strong>
+            </p>
+
+            <a
+                    class="primary-link"
+                    th:href="@{http://localhost:5173/deck/{id}(id=${deck.id})}">
+                Apri nell'app
+            </a>
+
+        </article>
+
+    </section>
+
+    <nav
+            class="pagination"
+            th:if="${deckPage.totalPages > 1}"
+            aria-label="Paginazione catalogo">
+
+        <a
+                class="pagination-button"
+                th:if="${deckPage.hasPrevious()}"
+                th:href="@{/catalogo(page=${deckPage.number - 1})}">
+            ← Precedente
+        </a>
+
+        <span class="pagination-info">
+            Pagina
+            <strong th:text="${deckPage.number + 1}">1</strong>
+            di
+            <strong th:text="${deckPage.totalPages}">1</strong>
+        </span>
+
+        <a
+                class="pagination-button"
+                th:if="${deckPage.hasNext()}"
+                th:href="@{/catalogo(page=${deckPage.number + 1})}">
+            Successiva →
+        </a>
+
+    </nav>
+
+</main>
+
+</body>
+</html>

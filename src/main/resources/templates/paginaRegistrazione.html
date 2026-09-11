@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+  <title>Registrazione - Memo</title>
+
+  <link
+          rel="icon"
+          th:href="@{/favicon.ico}">
+
+  <link
+          rel="stylesheet"
+          th:href="@{/css/thymeleaf.css}">
+</head>
+
+<body>
+
+<header class="simple-header">
+  <a class="logo" href="http://localhost:5173/">
+    Memo
+  </a>
+
+  <nav>
+    <a th:href="@{/catalogo}">Catalogo</a>
+    <a href="http://localhost:5173/login">Accedi</a>
+  </nav>
+</header>
+
+<main class="auth-page">
+
+  <section class="auth-card">
+
+    <h1>Crea un account</h1>
+
+    <p class="subtitle">
+      Registrati per creare, salvare
+      e studiare i tuoi mazzi.
+    </p>
+
+    <div
+            class="error-message"
+            th:if="${error}"
+            th:text="${error}">
+      Errore
+    </div>
+
+    <form
+            th:action="@{/register}"
+            method="post">
+
+      <label for="username">
+        Username
+      </label>
+
+      <input
+              id="username"
+              name="username"
+              type="text"
+              th:value="${username}"
+              autocomplete="username"
+              required>
+
+      <label for="password">
+        Password
+      </label>
+
+      <input
+              id="password"
+              name="password"
+              type="password"
+              autocomplete="new-password"
+              required>
+
+      <label for="confirmPassword">
+        Conferma password
+      </label>
+
+      <input
+              id="confirmPassword"
+              name="confirmPassword"
+              type="password"
+              autocomplete="new-password"
+              required>
+
+      <button
+              class="primary-button"
+              type="submit">
+        Registrati
+      </button>
+
+    </form>
+
+    <p class="login-link">
+      Hai già un account?
+      <a href="http://localhost:5173/login">
+        Accedi
+      </a>
+    </p>
+
+  </section>
+
+</main>
+
+</body>
+</html>
