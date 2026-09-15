@@ -15,11 +15,11 @@ public interface UtenteRepository extends JpaRepository<Utente, Long> {
     @Query("select distinct u from Utente u join u.credentials c where c.username = :username")
     Optional<Utente> findByUsername(@Param("username") String username);
 
-    @Modifying
+    @Modifying(clearAutomatically = true)
     @Query(value = "delete from user_bookmarked_decks where deck_id = :deckId", nativeQuery = true)
     void deleteBookmarkLinks(@Param("deckId") Long deckId);
 
-    @Modifying
+    @Modifying(clearAutomatically = true)
     @Query(value = "delete from user_liked_decks where deck_id = :deckId", nativeQuery = true)
     void deleteLikeLinks(@Param("deckId") Long deckId);
 }

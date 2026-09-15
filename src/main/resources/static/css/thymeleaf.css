@@ -479,6 +479,7 @@ a {
             rgba(47, 128, 237, 0.28);
 }
 
+
 /* ==============================
    PAGINAZIONE
    ============================== */
@@ -747,60 +748,126 @@ a {
 
 
 /* ==============================
-   CARD REGISTRAZIONE
+   CONTENITORE PAGINA AUTH
    ============================== */
 
-.auth-card {
-    padding: 2rem;
+.auth-page {
+    flex: 1;
 
-    background: white;
+    min-height: 65vh;
 
-    border:
-            1px solid
-            var(--bordo);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    border-radius: 20px;
-
-    box-shadow:
-            0 15px 45px
-            rgba(47, 128, 237, 0.11);
-}
-
-.auth-card-heading {
-    margin-bottom: 1.6rem;
-}
-
-.auth-card-heading h2 {
-    margin:
-            0 0
-            0.5rem;
-
-    color: var(--testo);
-
-    font-size: 1.6rem;
-}
-
-.auth-card-heading p {
-    margin: 0;
-
-    color: var(--testo-secondario);
-
-    font-size: 0.9rem;
-
-    line-height: 1.5;
+    padding:
+            3rem
+            1rem;
 }
 
 
 /* ==============================
-   FORM
+   CARD REGISTRAZIONE
+   ============================== */
+
+.auth-card {
+    width:
+            min(
+                    430px,
+                    100%
+            );
+
+    padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 1rem;
+
+    background: white;
+
+    border: none;
+
+    border-radius: 20px;
+
+    box-shadow:
+            0 8px 24px
+            rgba(0, 0, 0, 0.1);
+}
+
+.auth-card h1 {
+    margin: 0;
+
+    color: #333;
+}
+
+.auth-card .subtitle {
+    margin:
+            0 0
+            0.5rem;
+
+    color: #777;
+}
+
+
+/* ==============================
+   FORM REGISTRAZIONE
    ============================== */
 
 .auth-card form {
     display: flex;
     flex-direction: column;
 
-    gap: 1rem;
+    gap: 0.45rem;
 }
+
+.auth-card label {
+    color: #555;
+
+    font-size: 0.95rem;
+    font-weight: bold;
+}
+
+.auth-card input {
+    width: 100%;
+
+    margin-bottom: 0.55rem;
+
+    padding:
+            0.85rem
+            1rem;
+
+    border:
+            1px solid
+            #ddd;
+
+    border-radius: 10px;
+
+    background: white;
+
+    color: var(--testo);
+
+    font-size: 0.95rem;
+
+    outline: none;
+
+    transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
+}
+
+.auth-card input:focus {
+    border-color: var(--blu);
+
+    box-shadow:
+            0 0 0 3px
+            rgba(47, 128, 237, 0.10);
+}
+
+
+/* ==============================
+   FORM-GROUP
+   ============================== */
 
 .form-group {
     display: flex;
@@ -868,19 +935,19 @@ a {
     margin-top: 0.5rem;
 
     padding:
-            0.9rem
+            0.85rem
             1rem;
 
     border: none;
 
-    border-radius: 11px;
+    border-radius: 24px;
 
-    background: var(--gradiente);
+    background: var(--blu);
 
     color: white;
 
     font-size: 0.95rem;
-    font-weight: 700;
+    font-weight: bold;
 
     cursor: pointer;
 
@@ -889,16 +956,19 @@ a {
             rgba(47, 128, 237, 0.22);
 
     transition:
+            background 0.2s ease,
             transform 0.2s ease,
             box-shadow 0.2s ease;
 }
 
 .primary-button:hover {
+    background: #2672d8;
+
     transform: translateY(-1px);
 
     box-shadow:
             0 8px 20px
-            rgba(108, 76, 241, 0.25);
+            rgba(47, 128, 237, 0.28);
 }
 
 
@@ -1081,6 +1151,12 @@ a {
     }
 
     .registration-page {
+        padding:
+                2rem
+                1rem;
+    }
+
+    .auth-page {
         padding:
                 2rem
                 1rem;

@@ -124,9 +124,7 @@ public class DeckService {
 
         utenteRepository.deleteBookmarkLinks(id);
         utenteRepository.deleteLikeLinks(id);
-
-        // Se elimina un ADMIN, user potrebbe non essere l'autore del mazzo.
-        deck.getAutore().getDecks().remove(deck);
+        
         deckRepository.delete(deck);
     }
 
